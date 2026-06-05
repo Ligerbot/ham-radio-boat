@@ -1,0 +1,23 @@
+from PIL import Image
+#import PIL
+import pysstv.color
+
+image = Image.open("input.png") #temporary until we get a camera
+#pd90 is 320 by 256
+#i would do robot36 but it doesn't work welll with pysstv
+
+#the following code handles adding black bars to the side
+
+image.thumbnail((640, 496)) #downsizes the image
+
+newbg = Image.new('RGB', (640, 496)) #make a new image
+print(f"Image is {image.width} by {image.height}")
+imgwidth = image.width
+imgheight = image.height
+newbg.paste(image, (320-(imgwidth//2), (248-(imgheight//2)))) #paste image ontop of the new one
+
+#newbg.show()
+
+audio = pysstv.color.PD120(newbg, 44100, 16)
+print(dir(audio))
+audio.write_wav("temporary_output.wav")
