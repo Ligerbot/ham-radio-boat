@@ -28,6 +28,8 @@ This is probably just useful for sending telemetry. Use the other library for er
 
 # Data Link Layer protocol
 
+(I added the signing library to this now)
+
 (copied from the repository)
 
 The goal of this project to to make my own data link layer protocol for ham radio. I've tried to use AX.25, but it is seemingly impossible to decode it using AFSK in python.
@@ -44,4 +46,4 @@ To use this as a library run `import mac` then to send you run `mac.send_data("d
 
 # Signing
 
-I am working on the signing library still. The private and public keys will be changed when the boat is ready. Keep it the same right now for debugging.
+I will add documentation later, right now I'm too lazy so read signing-test-example.py

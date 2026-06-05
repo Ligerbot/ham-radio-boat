@@ -2,15 +2,21 @@ import local_libraries.tones as tones
 import time
 import reedsolo
 import subprocess
+import local_libraries.signing as signing
+
 rsc = reedsolo.RSCodec(10)
+id_table, rx_table = signing.load_blacklist()
+
 #file = True
 def recieve():
+	global rx_table
+	global id_table
 	global proc
 	global newframes
 	newframes = []
 	breaknow = False
 	proc = subprocess.Popen(
-		['minimodem', '--rx', '1200', '--confidence', '0.1', '-q'],
+		['minimodem', '--rx', '300', '--confidence', '0.1', '-q'],
 		stdout=subprocess.PIPE,
 		stderr=subprocess.DEVNULL
 	)
@@ -20,7 +26,12 @@ def recieve():
 		message = unframe(recieved)
 #		print(message)
 		if message != None and message != "":
-			return message
+			genuine, message, rx_tables = signing.verify(message, rx_table)
+			if genuine:
+				return message
+			else:
+				print("Message is from a replay attack")
+				return None
 def unframe(raw):
 	global breaknow
 	global newframes
@@ -88,7 +99,7 @@ def send(message):
 	global proc
 #	print("Sending: " + str(message))
 	proc = subprocess.Popen(
-		['minimodem', '--tx', '1200', '--confidence', '0.3'],
+		['minimodem', '--tx', '300', '--confidence', '0.3'],
 		stdin=subprocess.PIPE,
 		stderr=subprocess.DEVNULL
 	)
@@ -100,7 +111,21 @@ def send(message):
 	proc.terminate()
 	proc.terminate()
 
+def gen_rand_id():
+	global rx_table
+	global id_table
+	while True:
+		randnum = int(random.random()* 1000000000000)
+		if randnum not in id_table:
+			break
+		else:
+			print("Random number taken, getting another")
+	return randnum
 def send_data(msg):
+	global id_table
+	global rx_table
+	id = gen_rand_id()
+	msg = signing.sign(msg, id)
 	frames = format(msg)
 	for frame in frames:
 		while True:
@@ -150,3 +175,5 @@ if __name__ == "__main__":
 		proc.terminate()
 		proc.terminate()
 		print("Killed off minimodem")
+		signing.save_blacklist()
+		print("Saved blacklist")
