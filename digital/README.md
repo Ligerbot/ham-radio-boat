@@ -41,3 +41,7 @@ For every frame, the recieving side needs to ackgnowledge, otherwise the sending
 # Library Usage
 
 To use this as a library run `import mac` then to send you run `mac.send_data("data here")` or to recieve `output = mac.recieve()`.
+
+# Signing
+
+I am working on the signing library still. The private and public keys will be changed when the boat is ready. Keep it the same right now for debugging.
