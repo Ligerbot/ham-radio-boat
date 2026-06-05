@@ -12,7 +12,7 @@ The lower the baudrate, the longer it takes to transmit, while the higher the ba
 
 # FSK library
 
-I made a simple library for python to send text using FSK.
+I made a simple library for python to send text using FSK. This requires the program `minimodem` which can be installed on Debian by running `sudo apt install minimodem`.
 
 To use it in a program import it by adding `import fsk`.
 
