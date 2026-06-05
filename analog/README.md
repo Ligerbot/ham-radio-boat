@@ -1,3 +1,3 @@
-# sstv
+# Analog Modes
 
-Put all of the SSTV related programs here
+Any analog modes that the boat uses will go here.
