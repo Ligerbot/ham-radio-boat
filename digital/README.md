@@ -47,3 +47,8 @@ To use this as a library run `import mac` then to send you run `mac.send_data("d
 # Signing
 
 I will add documentation later, right now I'm too lazy so read signing-test-example.py
+
+# Dependencies
+pip3 install cryptography --break-system-packages
+
+
