@@ -20,7 +20,7 @@ image = Image.open("input.png") #temporary until we get a camera
 #audio = pysstv.color.PD120(newbg, 44100, 16) #note: it doesn't respect the sample rate for some reason. If decoding doesn't work, try 48000
 #print(dir(audio))
 
-#audio = sstv.Robot36(image, "KO6MUM")
+audio = sstv.Robot36(image, "KO6MUM")
 #audio = sstv.gray8(image, "KO6MUM")
-audio = sstv.PD120(image, "KO6MUM")
+#audio = sstv.PD120(image, "KO6MUM")
 audio.write_wav("temporary_output.wav")
