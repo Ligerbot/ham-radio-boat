@@ -4,6 +4,8 @@ Any analog modes that the boat uses will go here.
 
 # SSTV library
 
+Check `example_code.py`
+
 Run `import sstv` in your script
 
 Then, when you have a PIL image object, put it in an encoder function. Possible options are:
