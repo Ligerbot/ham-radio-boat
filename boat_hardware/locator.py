@@ -17,8 +17,10 @@ def update():
 	#Supported keys are lat, lon, bearing, time, height.
 	return listed #return the array
 
-exit(0) #so the code below won't run
-while time.time() - start < 60:
-	output = ser.readline().decode(errors='ignore').strip() #TODO: simplify this maybe..?
-	print(ser.readline().decode(errors='ignore').strip())
-ser.close()
+
+if __name__ == "main":
+	exit(0) #so the code below won't run
+	while time.time() - start < 60:
+		output = ser.readline().decode(errors='ignore').strip() #TODO: simplify this maybe..?
+		print(ser.readline().decode(errors='ignore').strip())
+	ser.close()
