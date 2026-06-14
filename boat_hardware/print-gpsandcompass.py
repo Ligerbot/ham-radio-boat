@@ -2,7 +2,7 @@
 
 import serial, time
 
-ser = serial.Serial('/dev/ttyACM0', 115200, timeout=5)
+ser = serial.Serial('COM0', 115200, timeout=5)
 
 start = time.time()
 while time.time() - start < 60:
