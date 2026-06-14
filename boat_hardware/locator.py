@@ -4,10 +4,7 @@
 # When compassandgps.ino is running on the arduino, and the arduno is connected to the rPi via USB cable, this program has the rPi print what the arduino outputs through serial.print
 
 import json
-import serial, time
-start = time.time() #whats this for?
-
-#time might not be necescary here
+import serial
 
 def update():
 	ser = serial.Serial('/dev/ttyACM0', 115200, timeout=5) #ttyACM0 and baud 115200 should be default on the RPI, adjust to whatever is necescary
