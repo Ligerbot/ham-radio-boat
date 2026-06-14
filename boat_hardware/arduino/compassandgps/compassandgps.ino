@@ -26,6 +26,21 @@ Adafruit_BNO055 bno = Adafruit_BNO055(55, 0x28, &Wire);
 void setup() {
   // put your setup code here, to run once:
 
+//claude wrote this:
+  Serial.begin(115200);
+  Serial.println("debug: booted");
+  delay(1000);
+  ss.begin(GPSBaud);
+
+  // ADD THIS
+  if (!bno.begin()) {
+    Serial.println("ERROR: BNO055 not detected. Check wiring/address.");
+    while (1);  // halt so you can see the message
+  }
+  Serial.println("debug: BNO055 initialized");
+//end of what claude wrote
+
+
   Serial.begin(115200);
   Serial.println("debug: booted");
 //  while (!Serial) delay(10);  // wait for serial port to open!
