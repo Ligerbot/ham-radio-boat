@@ -18,6 +18,7 @@ def update():
 
 if __name__ == "main":
 	exit(0) #so the code below won't run
+					#if that code won't run, we could just comment it out?
 	while time.time() - start < 60:
 		output = ser.readline().decode(errors='ignore').strip() #TODO: simplify this maybe..?
 		print(ser.readline().decode(errors='ignore').strip())
