@@ -1,4 +1,5 @@
 #credit to Nathan KO6MUM for the serial reader program. I moved around the code to put it into a library that is importable to other scripts
+#some of the code is from https://www.pyserial.com/docs/getting-started/
 
 # When compassandgps.ino is running on the arduino, and the arduno is connected to the rPi via USB cable, this program has the rPi print what the arduino outputs through serial.print
 
