@@ -8,7 +8,7 @@ def tx(wavfile):
 	#also TODO: bandpass filter so rpitx doesn't kill people with pacemakers
 	#another TODO: make it so it doesn't ask the sudo password eveyr time or any time at all
 
-	broadcast = subprocess.Popen(["sudo", "./testnfm.sh", "434", str(wavfile)],
+	broadcast = subprocess.Popen(["sudo", "./fm_transmitting/testnfm.sh", "434", str(wavfile)],
 		stdin=subprocess.PIPE,
 		stderr=subprocess.DEVNULL
 	)
